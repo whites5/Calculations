@@ -21,11 +21,21 @@ if os.path.exists(file_path_one) and os.path.exists(file_path_two):
         mm_two = json.load(json_file_two)
         print("MM Two data: " + str(mm_two))
 
-def criteria_one(data):
-    mm_net_premium = data.get('mm_net_premium')
-    if mm_net_premium is None:
-        return "mm net premium is not found in JSON"
-    if 350 >= mm_net_premium > 1500:
-        return "criteria one passed"
-    else:
-        return "criteria one failed"
+keys_one = mm_one.keys()
+keys_two = mm_two.keys()
+
+print(keys_one)
+print(keys_two)
+
+vehicle_mileage = mm_two["requestPayload"]["PolMessage"]["PolData"][0]["Type"]["Vehicle"][0]["Vehicle_AnnualMileage"]["Val"]
+
+print(vehicle_mileage)
+
+# def criteria_one(data):
+#     mm_net_premium = data.get('mm_net_premium')
+#     if mm_net_premium is None:
+#         return "mm net premium is not found in JSON"
+#     if 350 >= mm_net_premium > 1500:
+#         return "criteria one passed"
+#     else:
+#         return "criteria one failed"
