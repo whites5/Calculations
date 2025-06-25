@@ -11,15 +11,18 @@ the criteria, it will then start to go through the calculation for MM.
 
 #Load JSON Files to read
 
-file_path_one: str = r'C:\Users\whites5\OneDrive - Hastings Insurance Services Ltd\Documents\Python\Calculations\JSON\JSON Datalog.json'
-file_path_two: str = r'C:\Users\whites5\OneDrive - Hastings Insurance Services Ltd\Documents\Python\Calculations\JSON\JSON Input Test.json'
+file_path_one: str = r'/Users/simonwhite/PycharmProjects/Calculations/JSON/JSON Datalog.json'
+file_path_two: str = r'/Users/simonwhite/PycharmProjects/Calculations/JSON/JSON Input Test.json'
 
 if os.path.exists(file_path_one) and os.path.exists(file_path_two):
     with open(file_path_one, 'r') as json_file_one:
         mm_one = json.load(json_file_one)
+        print("MM One data: " + str(mm_one))
     with open(file_path_two, 'r') as json_file_two:
         mm_two = json.load(json_file_two)
+        print("MM Two data: " + str(mm_two))
 
+<<<<<<< HEAD
  #to check if market model criteria one is passing or not       
 def criteriaOne(mm_data):
     mm_premium = mm_data.get("HD", {}).get("mm_net_premium")
@@ -160,3 +163,23 @@ def criteriaFour(mm_datafour):
 results_four= criteriaFour(mm_two)
 if results_four == 'Acceptable':
     print(results_four)
+=======
+keys_one = mm_one.keys()
+keys_two = mm_two.keys()
+
+print(keys_one)
+print(keys_two)
+
+vehicle_mileage = mm_two["requestPayload"]["PolMessage"]["PolData"][0]["Type"]["Vehicle"][0]["Vehicle_AnnualMileage"]["Val"]
+
+print(vehicle_mileage)
+
+# def criteria_one(data):
+#     mm_net_premium = data.get('mm_net_premium')
+#     if mm_net_premium is None:
+#         return "mm net premium is not found in JSON"
+#     if 350 >= mm_net_premium > 1500:
+#         return "criteria one passed"
+#     else:
+#         return "criteria one failed"
+>>>>>>> b2d743fc798ba9e0ed975937f9aab87abdf9d9ce
